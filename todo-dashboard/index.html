@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ───────────── TOP BAR ───────────── -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-btn" id="btn-settings" title="Settings" aria-label="Settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
+    </div>
+    <div class="topbar-right">
+      <button class="icon-btn" id="btn-theme" title="Toggle theme" aria-label="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ───────────── MAIN LAYOUT ───────────── -->
+  <main class="dashboard">
+
+    <!-- LEFT COLUMN -->
+    <section class="col-left">
+
+      <!-- Greeting Card -->
+      <div class="card card-greeting">
+        <p class="greeting-text" id="greeting-text">Good morning</p>
+        <p class="greeting-date" id="greeting-date">—</p>
+        <p class="greeting-time" id="greeting-time">00:00</p>
+      </div>
+
+      <!-- Focus Timer Card -->
+      <div class="card card-timer">
+        <div class="card-label">Focus</div>
+        <div class="timer-display" id="timer-display">25:00</div>
+        <div class="timer-controls">
+          <button class="timer-btn" id="timer-start">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+          </button>
+          <button class="timer-btn" id="timer-stop">
+            <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </button>
+          <button class="timer-btn" id="timer-reset">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.3"/>
+            </svg>
+          </button>
+        </div>
+        <div class="timer-progress-wrap">
+          <div class="timer-progress-bar" id="timer-progress"></div>
+        </div>
+      </div>
+
+      <!-- Quick Links Card -->
+      <div class="card card-links">
+        <div class="card-label">Quick Links</div>
+        <div class="links-grid" id="links-grid">
+          <!-- rendered by JS -->
+        </div>
+        <button class="add-link-btn" id="btn-add-link" title="Add link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+      </div>
+
+    </section>
+
+    <!-- RIGHT COLUMN -->
+    <section class="col-right">
+
+      <!-- To-Do List Card -->
+      <div class="card card-todo">
+        <div class="todo-header">
+          <span class="card-label">Tasks</span>
+          <div class="todo-actions">
+            <button class="icon-btn small" id="btn-sort" title="Sort tasks" aria-label="Sort tasks">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="9" y2="18"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Sort dropdown -->
+        <div class="sort-dropdown hidden" id="sort-dropdown">
+          <button class="sort-opt" data-sort="default">Default</button>
+          <button class="sort-opt" data-sort="az">A → Z</button>
+          <button class="sort-opt" data-sort="za">Z → A</button>
+          <button class="sort-opt" data-sort="active">Active first</button>
+          <button class="sort-opt" data-sort="done">Done first</button>
+        </div>
+
+        <!-- Add task input -->
+        <div class="todo-input-row">
+          <input type="text" id="todo-input" placeholder="New task…" maxlength="120" autocomplete="off" />
+          <button class="icon-btn accent" id="btn-add-task" title="Add task" aria-label="Add task">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Task list -->
+        <ul class="todo-list" id="todo-list">
+          <!-- rendered by JS -->
+        </ul>
+
+        <p class="todo-empty hidden" id="todo-empty">No tasks yet.</p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ═══════════════ MODALS ═══════════════ -->
+
+  <!-- Settings Modal -->
+  <div class="modal-overlay hidden" id="modal-settings">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title">Settings</span>
+        <button class="icon-btn" id="close-settings" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label class="field-label">Your name</label>
+        <input type="text" id="input-name" placeholder="e.g. Alex" maxlength="40" autocomplete="off" />
+
+        <label class="field-label" style="margin-top:20px">Focus duration (minutes)</label>
+        <input type="number" id="input-duration" min="1" max="120" value="25" />
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" id="save-settings">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Link Modal -->
+  <div class="modal-overlay hidden" id="modal-link">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title">Add Quick Link</span>
+        <button class="icon-btn" id="close-link" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label class="field-label">Label</label>
+        <input type="text" id="link-label" placeholder="GitHub" maxlength="20" autocomplete="off" />
+
+        <label class="field-label" style="margin-top:16px">URL</label>
+        <input type="url" id="link-url" placeholder="https://github.com" autocomplete="off" />
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" id="save-link">Add</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Task Modal -->
+  <div class="modal-overlay hidden" id="modal-edit-task">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title">Edit Task</span>
+        <button class="icon-btn" id="close-edit-task" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label class="field-label">Task name</label>
+        <input type="text" id="edit-task-input" maxlength="120" autocomplete="off" />
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" id="save-edit-task">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
